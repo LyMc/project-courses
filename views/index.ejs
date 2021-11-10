@@ -1,0 +1,20 @@
+<%- include('layouts/header') %>
+    <h1 class="my-4">Cursuri Front End 2</h1>
+    <a href="/create" class="btn btn-primary">Create new course</a>
+    <div class="row g-3 my-4">
+      <% courses.forEach(course => { %>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card">
+          <img src="<%= course.image %>" class="card-img-top" alt="JS" />
+          <div class="card-body">
+            <h5 class="card-title"><%= course.title %></h5>
+            <p class="card-text"><%= course.description.substr(0, 100) %>...</p>
+            <a href="/course/<%= course.id %>" class="btn btn-primary"
+              >Open course</a
+            >
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+<%- include('layouts/footer') %>

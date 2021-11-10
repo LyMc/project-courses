@@ -1,0 +1,19 @@
+<%- include('layouts/header') %>
+<h2 class="my-4">Create a new course</h2>
+  <form action="/create" method="post" class="my-4">
+    <a class="btn btn-secondary" href="/">Back</a>
+    <button type="submit" class="btn btn-primary">Create</button>
+      <div class="mb-3">
+        <label for="title" class="form-label">Course title</label>
+        <input type="text" class="form-control" id="title" name="title" />
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Course image</label>
+        <input type="text" class="form-control" id="image" name="image" />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Course description</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+      </div>
+    </form>
+<%- include('layouts/footer') %>
