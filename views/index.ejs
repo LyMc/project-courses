@@ -5,10 +5,10 @@
       <% courses.forEach(course => { %>
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="card">
-          <img src="<%= course.image %>" class="card-img-top" alt="JS" />
+          <img src="<%= course.image %>" class="card-img-top bg-secondary" alt="JS" style="height: 100px;" />
           <div class="card-body">
             <h5 class="card-title"><%= course.title %></h5>
-            <p class="card-text"><%= course.description.substr(0, 100) %>...</p>
+            <p class="card-text"  style="height: 75px;"><%= course.description.substr(0, 100) %>...</p>
             <a href="/course/<%= course.id %>" class="btn btn-primary"
               >Open course</a
             >
