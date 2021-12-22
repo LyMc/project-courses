@@ -1,0 +1,11 @@
+<%- include('../layouts/header') %>
+<h2 class="my-4">Create new category</h2>
+  <form action="/categories" method="post" class="my-4">
+    <a class="btn btn-secondary" href="/">Back</a>
+    <button type="submit" class="btn btn-primary">Create</button>
+      <div class="mb-3">
+        <label for="name" class="form-label">Category name</label>
+        <input type="text" class="form-control" id="name" name="name" />
+      </div>
+    </form>
+<%- include('../layouts/footer') %>

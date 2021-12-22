@@ -1,7 +1,7 @@
 <%- include('layouts/header') %>
-    <h2><%= course.title %></h2>
+    <h2><%= course.title %> <span class="badge bg-info"><%= course.category?.name %></span></h2>
     <a class="btn btn-secondary" href="/">View all</a>
-    <a class="btn btn-success" href="/edit">Edit</a>
+    <a class="btn btn-success" href="/edit">Edit</a>    
     <p class="text-muted"><%= course.date.toLocaleDateString() %></p>
     <p><%= course.description %></p>
 <%- include('layouts/footer') %>

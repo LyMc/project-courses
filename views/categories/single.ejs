@@ -1,14 +1,7 @@
-<%- include('layouts/header') %>
-    <h1 class="my-4">Cursuri Front End 2</h1>
-    <a href="/create" class="btn btn-primary">Create new course</a>
-    <a href="/categories/create" class="btn btn-primary">Create new category</a>
-    <ul class="my-4">
-      <% categories.forEach(category => { %>
-      <li>
-        <a href="/categories/<%= category.id %>"><%= category.name %></a>          
-      </li>
-      <% }) %>
-    </ul>
+<%- include('../layouts/header') %>
+    <h2><%= category.name %></h2>
+    <a class="btn btn-secondary" href="/">View all</a>
+    <button class="btn btn-success" id="edit-category">Edit</button>
     <div class="row g-3 my-4">
       <% courses.forEach(course => { %>
       <div class="col-12 col-sm-6 col-lg-4">
@@ -25,4 +18,4 @@
       </div>
       <% }) %>
     </div>
-<%- include('layouts/footer') %>
+<%- include('../layouts/footer') %>

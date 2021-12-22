@@ -3,7 +3,10 @@ const app = express();
 const port = 3000;
 
 const mongoose = require('mongoose');
-const Course = require('./Course');
+const Category = require('./models/Category');
+const Course = require('./models/Course');
+
+const categories = require('./routes/categories');
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -16,22 +19,34 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get('/', async (req, res) => {
   const courses = await Course.find();
+  const categories = await Category.find();
 
-  res.render('index', { courses });
+  res.render('index', { courses, categories });
 });
-app.get('/create', (req, res) => {
-  res.render('create');
+app.get('/create', async (req, res) => {
+  const categories = await Category.find();
+
+  res.render('create', { categories });
 });
 app.post('/create', async (req, res) => {
-  const { title, image, description } = req.body;
-  const course = new Course({ title, image, description });
+  const { category: categoryName, title, image, description } = req.body;
+  const category = categoryName
+    ? await Category.findOne({ name: categoryName })
+    : null;
+
+  const course = new Course({
+    title,
+    image,
+    description,
+    category: category?.id,
+  });
   await course.save();
 
   res.redirect(`/course/${course.id}`);
 });
 app.get('/course/:id', async (req, res) => {
   try {
-    const course = await Course.findById(req.params.id);
+    const course = await Course.findById(req.params.id).populate('category');
     if (course) {
       res.render('course', {
         course,
@@ -43,6 +58,8 @@ app.get('/course/:id', async (req, res) => {
     res.sendStatus(404);
   }
 });
+
+app.use('/categories', categories);
 
 app.listen(port, () => {
   mongoose.connect(

@@ -4,6 +4,15 @@
     <a class="btn btn-secondary" href="/">Back</a>
     <button type="submit" class="btn btn-primary">Create</button>
       <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" name="category" list="categories" />
+        <datalist id="categories">
+          <% categories.forEach(category => { %>
+            <option value="<%= category.name %>">
+          <% }) %>
+        </datalist>
+      </div>
+      <div class="mb-3">
         <label for="title" class="form-label">Course title</label>
         <input type="text" class="form-control" id="title" name="title" />
       </div>

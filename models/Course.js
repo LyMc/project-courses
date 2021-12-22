@@ -8,6 +8,7 @@ const Course = mongoose.model('Course', {
   date: { type: Date, default: Date.now },
   image: String,
   description: String,
+  category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
 });
 
 module.exports = Course;
